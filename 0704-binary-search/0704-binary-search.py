@@ -1,15 +1,17 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        return self._b_search(nums, target, 0, len(nums))
+        self.nums = nums
+        self.target = target
+        return self._b_search(0, len(nums))
 
-    def _b_search(self, nums: List[int], target: int, left, right) -> int:
+    def _b_search(self, left, right) -> int:
         middle = left + ((right - left) // 2)
 
-        if nums[middle] == target:
+        if self.nums[middle] == self.target:
             return middle
         elif left == right or left == middle:
             return -1
-        elif nums[middle] < target:
-            return self._b_search(nums, target, middle, right)
+        elif self.nums[middle] < self.target:
+            return self._b_search(middle, right)
         else:
-            return self._b_search(nums, target, left, middle)
+            return self._b_search(left, middle)
