@@ -10,6 +10,6 @@ class Solution:
 
             if target >= letters[m]:
                 l = m + 1
-            if target < letters[m]:
+            else:
                 r = m - 1
         return letters[l]
