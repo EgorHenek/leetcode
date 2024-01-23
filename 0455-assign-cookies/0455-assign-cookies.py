@@ -3,7 +3,7 @@ class Solution:
         g.sort()
         s.sort()
         i = j = 0
-        while j < len(s) and i < len(g):
+        while i < len(g) and j < len(s):
             if s[j] >= g[i]:
                 i += 1
             j += 1
