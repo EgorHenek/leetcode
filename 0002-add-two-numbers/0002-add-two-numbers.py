@@ -7,22 +7,17 @@ class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         reserve = 0
         start = result = ListNode()
-        while l1 or l2:
+        while l1 or l2 or reserve:
             summary = reserve
-            if l1:
-                summary += l1.val
-            if l2:
-                summary += l2.val
-            result.val = summary % 10
-            reserve = summary // 10
-            if l1:
-                l1 = l1.next
-            if l2:
-                l2 = l2.next
-            if l1 or l2:
-                result.next = ListNode()
-                result = result.next
-        if reserve:
-            result.next = ListNode(reserve)
-        return start
+            summary += l1.val if l1 else 0
+            summary += l2.val if l2 else 0
+
+            reserve, d = divmod(summary, 10)
+
+            result.next = ListNode(d)
+            result = result.next
+
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        return start.next
         
