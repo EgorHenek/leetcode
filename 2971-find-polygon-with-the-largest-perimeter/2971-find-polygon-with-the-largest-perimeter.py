@@ -3,10 +3,8 @@ class Solution:
         nums.sort()
         result = -1
         perimeter = 0
-        perimeter_count = 0
-        for i, n in enumerate(nums):
+        for n in nums:
             if perimeter > n:
                 result = perimeter + n
-                perimeter_count = i
             perimeter += n
         return result
